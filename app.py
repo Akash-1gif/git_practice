@@ -2,13 +2,15 @@ from flask import Flask,request,render_template,redirect
 
 app = Flask(__name__)
 
+x='homo sapiens'
+
 @app.route('/')
 def entry_point1():
-    return render_template('index.html')
+    return render_template('index.html',name_x=x)
 
 @app.route('/index.html')
 def entry_point_index():
-    return render_template('index.html')
+    return render_template('index.html',name_x=x)
 
 @app.route('/about.html')
 def entry_point_about():
