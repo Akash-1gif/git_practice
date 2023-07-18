@@ -8,10 +8,6 @@ x='homo sapiens'
 def entry_point1():
     return render_template('index.html',name_x=x)
 
-@app.route('/index')
-def entry_point_index():
-    return render_template('index.html',name_x=x)
-
 @app.route('/about')
 def entry_point_about():
     return render_template('about.html')
