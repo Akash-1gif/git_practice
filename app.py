@@ -1,6 +1,10 @@
 from flask import Flask,request,render_template,redirect
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI']="sqlite:///posts.db"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+db=SQLAlchemy(app)
 
 x='homo sapiens'
 
@@ -29,4 +33,4 @@ def entry_point_works():
     return render_template('works.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
