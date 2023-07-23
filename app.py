@@ -1,4 +1,5 @@
 from flask import Flask,request,render_template,redirect
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -12,12 +13,22 @@ def entry_point1():
 def entry_point_about():
     return render_template('about.html')
 
-@app.route('/confess')
+@app.route('/confess',methods=['GET','POST'])
 def entry_point_confess():
+    if request.method=='POST':
+        confess=request.form['confess']
+        print(f"{confess}")
     return render_template('confess.html')
 
-@app.route('/contact')
+@app.route('/contact',methods=['GET','POST'])
 def entry_point_contact():
+    if request.method=="POST":
+        name=request.form['name']
+        email=request.form['email']
+        subject=request.form['subject']
+        message=request.form['message']
+        print(f'{name}\n{email}\n{subject}\n{message}\n')
+
     return render_template('contact.html')
 
 @app.route('/posts')
