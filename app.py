@@ -12,12 +12,25 @@ db=SQLAlchemy(app)
 app.app_context().push()
 
 class Confess(db.Model):
-    sno = db.Column(db.Integer, primary_key=True)
-    confess_c = db.Column(db.Text,nullable=False)
-    date = db.Column(db.DateTime,default=datetime.utcnow)
+    sno=db.Column(db.Integer, primary_key=True)
+    confess_c=db.Column(db.Text,nullable=False)
+    date=db.Column(db.DateTime,default=datetime.utcnow)
 
     def __repr__(self)->str:
         return f"{self.sno}"
+    
+
+class Contact(db.Model):
+    sno=db.Column(db.Integer, primary_key=True)
+    name_c=db.Column(db.String(30),nullable=False)
+    email_c=db.Column(db.String(50),nullable=False)
+    subject_c=db.Column(db.String(255),nullable=False)
+    message_c=db.Column(db.Text,nullable=False)
+
+    def __repr__(self)->str:
+        return f"{self.sno}-{self.subject_c}"    
+    
+db.create_all()
 
 @app.route('/')
 def entry_point1():
@@ -30,10 +43,9 @@ def entry_point_about():
 @app.route('/confess',methods=['GET','POST'])
 def entry_point_confess():
     if request.method=='POST':
-        confess = request.form['confess']
-        date_time = datetime.utcnow()
-        entry = Confess(confess_c=confess, date=date_time)
-
+        confess=request.form['confess']
+        date_time=datetime.utcnow()
+        entry=Confess(confess_c=confess, date=date_time)
         # Add the new entry to the database and commit the changes
         db.session.add(entry)
         db.session.commit()
@@ -48,7 +60,11 @@ def entry_point_contact():
         email=request.form['email']
         subject=request.form['subject']
         message=request.form['message']
-        print(f'{name}\n{email}\n{subject}\n{message}\n')
+        entry=Contact(name_c=name,email_c=email,subject_c=subject,message_c=message)
+        # Add the new entry to the database and commit the changes
+        db.session.add(entry)
+        db.session.commit()
+        
 
     return render_template('contact.html')
 
