@@ -30,10 +30,12 @@
             -Akash
           </figcaption>
         </figure>
-        <div>
-          <label for="Confess" class="form-label display-6">Confess here!</label>
-          <textarea class="form-control" id="Confess" rows="5"></textarea>
-        </div>
-        <button type="button" class="btn my-4 btn-success">Confess :)</button>
+        <form action="/confess" method="post">
+          <div>
+            <label for="Confess" class="form-label display-6">Confess here!</label>
+            <textarea class="form-control" id="Confess" rows="5"></textarea>
+          </div>
+          <button type="button" class="btn my-4 btn-success">Confess :)</button>
+        </form>
       </div>
     {%endblock%}
