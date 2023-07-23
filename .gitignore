@@ -2,3 +2,4 @@
 *.css
 logs/
 ignore_trash/
+__pycache__/
