@@ -2,5 +2,10 @@
     "params":{
         "local_uri":"sqlite:///confess.db",
         "prod_uri":"sqlite:///confess.db"
+    },
+    "metadata":{
+        "index_bio":"I'm glad that you have made it to my page. I'm Akash and if I have to describe myself, then it would be a passionate, imaginative, and playful individual, who seeks excitement, creativity, and uniqueness in every aspect of life. I'm open to new people, places, challenges and fun.",
+        "contact_info":"Akash, being highly cautious about his credentials, ensures his utmost safety. Consequently, reaching out to him directly via email or phone proves to be a challenge. Rest assured, your message will promptly trigger an immediate notification.",
+        "confess_info":"I appreciate your openness and trust in confiding your thoughts and opinions with me. It brings me great joy to create a space where you can freely express yourself, knowing that your confessions will be heard with an open heart and without judgment. I believe in the power of honesty and authenticity, and by sharing your true thoughts, you contribute to fostering a genuine connection between us. Your messages matter, and I am grateful for the opportunity to listen and be there for you."
     }
 }

@@ -10,6 +10,9 @@ x='homo sapiens'
 with open('config.json','r') as c:
     params=json.load(c)["params"]
 
+with open('config.json','r') as c: 
+    metadata=json.load(c)["metadata"]
+
 local_server_1=True
 
 if (local_server_1==True):
@@ -45,7 +48,7 @@ db.create_all()
 
 @app.route('/')
 def entry_point1():
-    return render_template('index.html',name_x=x)
+    return render_template('index.html',name_x=x,index_bio=metadata["index_bio"])
 
 @app.route('/about')
 def entry_point_about():
@@ -62,7 +65,7 @@ def entry_point_confess():
         db.session.commit()
 
 
-    return render_template('confess.html')
+    return render_template('confess.html',confess_info=metadata["confess_info"])
 
 @app.route('/contact',methods=['GET','POST'])
 def entry_point_contact():
@@ -77,7 +80,7 @@ def entry_point_contact():
         db.session.commit()
         
 
-    return render_template('contact.html')
+    return render_template('contact.html',contact_info=metadata["contact_info"])
 
 @app.route('/posts')
 def entry_point_posts():
