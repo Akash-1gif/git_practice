@@ -24,15 +24,15 @@
         <form action="/contact" method="post">
           <div class="mb-3 my-2">
             <label for="inputName" class="form-label">Your name</label>
-            <input type="text" class="form-control mb-4" name="name" id="inputName" placeholder="Enter your name here ">
+            <input type="text" class="form-control mb-4" name="name" id="inputName" placeholder="Enter your name here" required>
             <label for="inputEmail" class="form-label">Your email address</label>
-            <input type="email" class="form-control mb-4" name="email" id="inputEmail" placeholder="Enter your email here">
+            <input type="email" class="form-control mb-4" name="email" id="inputEmail" placeholder="Enter your email here" required>
             <label for="inputSubject" class="form-label">Your subject</label>
-            <input type="text" class="form-control mb-4" name="subject" id="inputSubject" placeholder="Enter your subject here ">
+            <input type="text" class="form-control mb-4" name="subject" id="inputSubject" placeholder="Enter your subject here" required>
           </div>
           <div class="mb-5">
             <label for="inputMater" class="form-label">Message</label>
-            <textarea class="form-control" name="message" id="inputMater" rows="5"></textarea>
+            <textarea class="form-control" name="message" id="inputMater" rows="5" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Send Message</button>
         </form>
