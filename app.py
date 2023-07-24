@@ -1,6 +1,8 @@
 from flask import Flask,request,render_template,redirect
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
+import smtplib
+from email.mime.text import MIMEText
 import json
 
 
@@ -12,6 +14,9 @@ with open('config.json','r') as c:
 
 with open('config.json','r') as c: 
     metadata=json.load(c)["metadata"]
+
+with open('config.json','r') as c:
+    credentials=json.load(c)["credentials"]
 
 local_server_1=True
 
@@ -63,6 +68,17 @@ def entry_point_confess():
         # Add the new entry to the database and commit the changes
         db.session.add(entry)
         db.session.commit()
+        #notification
+        server=smtplib.SMTP('smtp.outlook.com',587)
+        server.starttls()
+        server.login(credentials["server_email"],credentials["password"])
+        msg=MIMEText(confess)
+        msg['Subject']="You have a confession"
+        msg['From']=credentials["server_email"]
+        msg['To']=credentials["recepient_email"]
+        msg.set_param('importance','high value')
+        server.sendmail(credentials["server_email"],credentials["recepient_email"],msg.as_string())
+        
 
 
     return render_template('confess.html',confess_info=metadata["confess_info"])

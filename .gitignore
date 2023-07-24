@@ -3,3 +3,4 @@
 logs/
 ignore_trash/
 __pycache__/
+config.json
