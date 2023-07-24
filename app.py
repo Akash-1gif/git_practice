@@ -1,12 +1,23 @@
 from flask import Flask,request,render_template,redirect
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
+import json
 
 
 app = Flask(__name__)
 x='homo sapiens'
 
-app.config['SQLALCHEMY_DATABASE_URI']="sqlite:///confess.db"
+with open('config.json','r') as c:
+    params=json.load(c)["params"]
+
+local_server_1=True
+
+if (local_server_1==True):
+    app.config['SQLALCHEMY_DATABASE_URI']=params["local_uri"]
+else:
+    app.config['SQLALCHEMY_DATABASE_URI']=params["prod_uri"]
+
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 db=SQLAlchemy(app)
 app.app_context().push()

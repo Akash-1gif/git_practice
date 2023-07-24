@@ -1,0 +1,6 @@
+{
+    "params":{
+        "local_uri":"sqlite:///confess.db",
+        "prod_uri":"sqlite:///confess.db"
+    }
+}
