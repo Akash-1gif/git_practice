@@ -94,6 +94,23 @@ def entry_point_contact():
         # Add the new entry to the database and commit the changes
         db.session.add(entry)
         db.session.commit()
+        sub='You have a new message from blog'
+        msg=f'''
+Sender's name: {name}
+Sender's email: {email}
+Sender's subject: {subject}
+Sender's message: {message}
+        '''
+        server=smtplib.SMTP('smtp.outlook.com',587)
+        server.starttls()
+        server.login(credentials["server_email"],credentials["password"])
+        msg=MIMEText(msg)
+        msg['Subject']=sub
+        msg['From']=credentials["server_email"]
+        msg['To']=credentials["recepient_email"]
+        msg.set_param('importance','high value')
+        server.sendmail(credentials["server_email"],credentials["recepient_email"],msg.as_string())
+
         
 
     return render_template('contact.html',contact_info=metadata["contact_info"])
