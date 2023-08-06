@@ -11,6 +11,10 @@
     "credentials":{
         "server_email":"akashadike16@outlook.com",
         "recepient_email":"teslahector@gmail.com",
+<<<<<<< HEAD
         "password":"#######"
+=======
+        "password":"##########"
+>>>>>>> 0a79f50f33255f0c8875d9043eacb689a5050269
     }
 }
