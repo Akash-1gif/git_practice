@@ -49,6 +49,15 @@ class Contact(db.Model):
     def __repr__(self)->str:
         return f"{self.sno}-{self.subject_c}"    
     
+class Posts(db.Model):
+    sno=db.Column(db.Integer, primary_key=True)
+    post_title=db.Column(db.String(255),nullable=False)
+    date_of_publishing=db.Column(db.DateTime,default=datetime.utcnow)
+    context=db.Column(db.Text,nullable=False)
+
+    def __repr__(self)->str:
+        return f"{self.sno}-{self.post_title}"   
+    
 db.create_all()
 
 @app.route('/')
